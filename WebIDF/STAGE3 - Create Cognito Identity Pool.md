@@ -19,10 +19,6 @@ This advanced demo consists of 5 stages :-
 
 ![Stage3 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ARCHITECTURE-STAGE3.png)  
 
-# Video Guide
-[Stage3 - Video Guide](https://youtu.be/MXkqOgXkwRQ)
-
-
 # STAGE 3A - CREATE A COGNITO IDENTITY POOL  
 
 Move to the Cognito Console https://console.aws.amazon.com/cognito/home?region=us-east-1#
