@@ -1,4 +1,4 @@
-# Advanced Demo - Web Identity Federation
+# STAGE 2 - Web Identity Federation
 
 In this advanced demo series you will be implementing a simple serverless application which uses Web Identity Federation.  
 The application runs using the following technologies  
