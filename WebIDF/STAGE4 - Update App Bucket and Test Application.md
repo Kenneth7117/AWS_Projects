@@ -19,10 +19,6 @@ This advanced demo consists of 5 stages :-
 
 ![Stage4 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ARCHITECTURE-STAGE4.png)  
 
-# Video Guide
-[Stage4 - Video Guide](https://youtu.be/YkDImYUcY3U)
-
-
 # STAGE 4A - Download index.html and scripts.js from the S3   
 
 Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1    
