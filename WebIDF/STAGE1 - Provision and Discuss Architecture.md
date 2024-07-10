@@ -19,10 +19,6 @@ This advanced demo consists of 5 stages :-
 
 ![Stage1 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ARCHITECTURE-STAGE1.png)  
 
-# Video Guide
-[Stage1 - Video Guide](https://youtu.be/DyiJZz07g_E)
-
-
 # STAGE 1A - Login to an AWS Account    
 
 Login to an AWS account using a user with admin privileges and ensure your region is set to `us-east-1` `N. Virginia`  
