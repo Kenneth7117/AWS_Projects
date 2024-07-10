@@ -17,7 +17,7 @@ This advanced demo consists of 5 stages :-
 - STAGE 4 : Update App Bucket & Test Application  
 - STAGE 5 : Cleanup the account  
 
-![Stage1 - PNG](https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE1.png)  
+![Stage1 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ARCHITECTURE-STAGE1.png)  
 
 # Video Guide
 [Stage1 - Video Guide](https://youtu.be/DyiJZz07g_E)
