@@ -1,6 +1,6 @@
-# Advanced Demo - Web Identity Federation
+# Web Identity Federation
 
-In this advanced demo series you will be implementing a simple serverless application which uses Web Identity Federation.  
+In this Project we have implemented a serverless application which uses Web Identity Federation. Credits to Adrian Cantrill for his architecture diagrams.
 The application runs using the following technologies
 
 - S3 for front-end application hosting
@@ -21,11 +21,10 @@ This advanced demo consists of 6 stages :-
 
 ## Instructions
 
-- [Stage1](https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE1%20-%20Provision%20and%20Discuss%20Architecture.md)
-- [Stage2](https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE2%20-%20Create%20Google%20APIProject%20and%20Client%20ID.md)
-- [Stage3](https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE3%20-%20Create%20Cognito%20Identity%20Pool.md)
-- [Stage4](https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE4%20-%20Update%20App%20Bucket%20and%20Test%20Application.md)
-- [Stage5](https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE5%20-%20Cleanup.md)
+- [Stage1](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/STAGE1%20-%20Provision%20and%20Discuss%20Architecture.md)
+- [Stage2](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/STAGE2%20-%20Create%20Google%20APIProject%20and%20Client%20ID.md)
+- [Stage3](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/STAGE3%20-%20Create%20Cognito%20Identity%20Pool.md)
+- [Stage4](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/STAGE4%20-%20Update%20App%20Bucket%20and%20Test%20Application.md)
 
 
 
