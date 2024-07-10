@@ -19,9 +19,6 @@ This advanced demo consists of 5 stages :-
 
 ![Stage2- PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ARCHITECTURE-STAGE2.png)  
 
-# Video Guide
-[Stage2 - Video Guide](https://youtu.be/wWQ8lgqa4fo)
-
 # STAGE 2A - Create Google API PROJECT  
 
 Any application that uses OAuth 2.0 to access Google APIs must have authorization credentials that identify the application to Google's OAuth 2.0 server  
