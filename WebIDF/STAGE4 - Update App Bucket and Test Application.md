@@ -17,7 +17,7 @@ This advanced demo consists of 5 stages :-
 - STAGE 4 : Update App Bucket & Test Application **<= THIS STAGE**  
 - STAGE 5 : Cleanup the account  
 
-![Stage4 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ARCHITECTURE-STAGE4.png)  
+![Stage4 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/Cognito(Stage4).drawio.png)  
 
 # STAGE 4A - Download index.html and scripts.js from the S3   
 
