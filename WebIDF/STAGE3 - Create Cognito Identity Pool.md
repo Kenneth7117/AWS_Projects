@@ -17,7 +17,7 @@ This advanced demo consists of 5 stages :-
 - STAGE 4 : Update App Bucket & Test Application  
 - STAGE 5 : Cleanup the account  
 
-![Stage3 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ARCHITECTURE-STAGE3.png)  
+![Stage3 - PNG](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/Cognito(Stage3).png)  
 
 # STAGE 3A - CREATE A COGNITO IDENTITY POOL  
 
