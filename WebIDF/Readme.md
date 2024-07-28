@@ -17,8 +17,6 @@ This advanced demo consists of 6 stages :-
 - STAGE 4 : Update App Bucket & Test Application
 - STAGE 5 : Cleanup the account
 
-![Architecture](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/ArchitectureEvolution.png)
-
 ## Instructions
 
 - [Stage1](https://github.com/Kenneth7117/AWS_Projects/blob/main/WebIDF/STAGE1%20-%20Provision%20and%20Discuss%20Architecture.md)
