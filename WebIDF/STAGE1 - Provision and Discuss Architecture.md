@@ -1,6 +1,6 @@
 # STAGE 1 - Web Identity Federation
 
-In this advanced demo series you will be implementing a simple serverless application which uses Web Identity Federation.  
+Implementing a simple serverless application which uses Web Identity Federation.  
 The application runs using the following technologies
 
 - S3 for front-end application hosting
