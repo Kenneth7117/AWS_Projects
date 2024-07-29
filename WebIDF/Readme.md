@@ -1,6 +1,6 @@
 # Web Identity Federation
 
-In this Project we have implemented a serverless application which uses Web Identity Federation. Credits to Adrian Cantrill for his architecture diagrams.
+In this Project we have implemented a serverless application which uses Web Identity Federation. Credits to Adrian Cantrill for his implementation.
 The application runs using the following technologies
 
 - S3 for front-end application hosting
