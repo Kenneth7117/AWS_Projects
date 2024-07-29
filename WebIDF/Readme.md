@@ -9,13 +9,12 @@ The application runs using the following technologies
 
 The application runs from a browser, gets the user to login using a Google ID and then loads all images from a private S3 bucket into a browser using presignedURLs.
 
-This project consists of 5 stages :-
+This project consists of 4 stages :-
 
 - STAGE 1 : Provision the environment and review tasks 
 - STAGE 2 : Create Google API Project & Client ID
 - STAGE 3 : Create Cognito Identity Pool
 - STAGE 4 : Update App Bucket & Test Application
-- STAGE 5 : Cleanup the account
 
 ## Instructions
 
