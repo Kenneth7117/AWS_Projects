@@ -34,7 +34,7 @@ Very soon after the changes, the scream test fails and clients are reporting the
 ## Review the Changes for the Scream Test in Config and CloudTrail
 - Navigate to CloudTrail by entering "cloudtrail" in the search bar and selecting CloudTrail from the search results.
 - Click on the hamburger menu icon (the icon with three horizontal bars) in the top left corner.
-- Click on Event History.
+- Click on **Event History**.
 - Click on the Read-only dropdown menu and select Resource Name.
 - In the search field, paste in the Instance ID noted in the first step and look for the StopInstances event.
 
@@ -43,7 +43,7 @@ Very soon after the changes, the scream test fails and clients are reporting the
 - Select the StopInstances event and review the details of the change.
 - In the search field of the CloudTrail console, paste in the route table ID that you made note of before and look for any DeleteRoute events.
 - Select the DeleteRoute event and review the details of the changes.
-- At the bottom of the event details, click on View AWS Config resource timeline.
+- At the bottom of the event details, click on View **AWS Config resource timeline**.
 
 ![Config](https://github.com/Kenneth7117/AWS_Projects/blob/main/AWS%20Config%20and%20Cloud%20Trail/Images/png3.png)
 
@@ -51,8 +51,8 @@ Very soon after the changes, the scream test fails and clients are reporting the
 - Make note of the output in the JSON diff results, which show exactly what route from the PrivateAZ1 route table was deleted, specifically the NAT Gateway ID. You will need this later on in the lab.
 - In the search field of the CloudTrail console, paste in the Security Group ID noted in the first step and look for any RevokeSecurityGroupEgress events.
 - Select the RevokeSecurityGroupEgress event and review the details of the changes.
-- At the bottom of the event details, click on View AWS Config resource timeline.
-- Make note of the output in the JSON diff results, which show exactly what security group rules were deleted from the Corporate Application Server security group.
+- At the bottom of the event details, click on View **AWS Config resource timeline**.
+- Make note of the output in the **JSON diff results**, which show exactly what security group rules were deleted from the Corporate Application Server security group.
 
 ## Revert the Scream Test Changes and Test Networking
 - Navigate to the VPC console by entering "VPC" in the search bar on top and selecting the VPC search result.
