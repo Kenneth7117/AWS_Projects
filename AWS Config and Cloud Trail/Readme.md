@@ -1,4 +1,7 @@
 Introduction
+
+https://github.com/Kenneth7117/AWS_Projects/blob/main/AWS%20Config%20and%20Cloud%20Trail/Images/CloudTrail_and_Config_Lab.png
+
 In this hands-on lab, you just started as a Cloud Engineer at a company. Your new boss has asked you to do a scream test and stop an EC2 instance as well as remove network routes and rules to validate if the Lab VPC and Corporate Server EC2 instance can be decommissioned.
 
 Very soon after the changes, the scream test fails and clients are reporting they cannot connect to their applications. Your boss reaches back out to you and asks you to revert all changes you made. In this lab, you will leverage AWS CloudTrail and AWS Config to ensure all changes are accounted for and reverted to restore the Lab environment. By the end of this exercise, you will be familiar enough with CloudTrail and Config to audit any unexpected or accidental changes to an account and determine what specifically was updated in case you need to roll back the changes.
