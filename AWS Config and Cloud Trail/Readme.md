@@ -1,6 +1,6 @@
 Introduction
 
-https://github.com/Kenneth7117/AWS_Projects/blob/main/AWS%20Config%20and%20Cloud%20Trail/Images/CloudTrail_and_Config_Lab.png
+(https://github.com/Kenneth7117/AWS_Projects/blob/main/AWS%20Config%20and%20Cloud%20Trail/Images/CloudTrail_and_Config_Lab.png)
 
 In this hands-on lab, you just started as a Cloud Engineer at a company. Your new boss has asked you to do a scream test and stop an EC2 instance as well as remove network routes and rules to validate if the Lab VPC and Corporate Server EC2 instance can be decommissioned.
 
