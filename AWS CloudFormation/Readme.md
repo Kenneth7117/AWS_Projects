@@ -27,7 +27,13 @@ In this hands-on lab, we're going to jump into an environment that already has a
 - Navigate back to the CloudFormation dashboard and click on the existing stack.
 - Click Update again.
 - Select Edit in Application Composer and click Edit in Application Composer.
+
+![Application Composer](https://github.com/Kenneth7117/AWS_Projects/blob/main/AWS%20CloudFormation/Images/Screenshot%202024-08-16%20001027.png)
+
 - Click the Template view at the top.
+
+![Template View](https://github.com/Kenneth7117/AWS_Projects/blob/main/AWS%20CloudFormation/Images/Screenshot%202024-08-16%20001135.png)
+
 - Ensure YAML is selected for the template.
 - Under Parameters, change the default size from t3.small to t3.micro by erasing "small" and typing "micro".
 ## Launch the Updated Stack and Verify the New EC2 Resource Is Reachable
