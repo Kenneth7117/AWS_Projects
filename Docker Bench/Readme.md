@@ -44,3 +44,7 @@ $ diff /tmp/bench1.out /tmp/bench2.out
 ```
 
 ![Bench2](https://github.com/Kenneth7117/AWS_Projects/blob/main/Docker%20Bench/Images/Screenshot%202024-08-16%20110947.png)
+
+# Conclusion
+- Use of Docker Bench in providing container best practises
+- Resolving a Warning Vulnerability to a Passs condition on the Docker Bench
