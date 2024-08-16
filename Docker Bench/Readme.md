@@ -47,4 +47,4 @@ $ diff /tmp/bench1.out /tmp/bench2.out
 
 # Conclusion
 - Use of Docker Bench in providing container best practises
-- Resolving a Warning Vulnerability to a Passs condition on the Docker Bench
+- Resolving a Warning Vulnerability to a Pass condition on the Docker Bench
