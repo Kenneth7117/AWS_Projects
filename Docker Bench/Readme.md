@@ -23,6 +23,9 @@ $ sudo sh docker-bench-security.sh > /tmp/bench1.out
 ```
 $ more /tmp/bench1.out
 ```
+
+![Bench1](https://github.com/Kenneth7117/AWS_Projects/blob/main/Docker%20Bench/Images/Screenshot%202024-08-16%20110207.png)
+
 - Use the auditctl command to list any auditing rules that are already setup on the system:
 ```
 $ sudo auditctl -l
@@ -39,3 +42,5 @@ $ sudo sh docker-bench-security.sh > /tmp/bench2.out
 ```
 $ diff /tmp/bench1.out /tmp/bench2.out
 ```
+
+![Bench2](https://github.com/Kenneth7117/AWS_Projects/blob/main/Docker%20Bench/Images/Screenshot%202024-08-16%20110947.png)
