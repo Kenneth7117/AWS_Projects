@@ -80,4 +80,4 @@ $ kubectl get pods
 ## Conclusion
 - Learnt the creation of K8s cluster
 - Editing the config file for version upgrade
-- pusing out a rolling upgrade
+- pushing out a rolling upgrade
