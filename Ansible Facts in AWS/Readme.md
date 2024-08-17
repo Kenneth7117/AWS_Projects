@@ -2,6 +2,8 @@
 ## Introduction
 For just about every Ansible module that performs an AWS task, there is a corresponding module for collecting facts regarding the related AWS component. A thorough understanding of the AWS principles in Ansible can help with implementing automation. This exercise promotes exploration of the facts provided for various AWS-related modules.
 
+![Arc](https://github.com/Kenneth7117/AWS_Projects/blob/main/Ansible%20Facts%20in%20AWS/Images/Screenshot%202024-08-17%20181534.png)
+
 ## Instructions
 To prepare for a possible security audit, we have been tasked with building some automation that can make a list of firewall rules on a target EC2 instance by tag, as well as show affiliated VPC and Subnet information. We will be developing the automation using Ansible in an AWS sandbox environment. We can gather the needed information from Ansible facts.
 
@@ -25,6 +27,8 @@ The default Ansible inventory has been configured to include the Ansible control
 
 ## Logging In
 Use the hands-on lab page to get the public IP of the cloud server we need to log into (making sure to use cloud_user as a username), then switch to the ansible user. The password for the two users is the same.
+
+![Su](https://github.com/Kenneth7117/AWS_Projects/blob/main/Ansible%20Facts%20in%20AWS/Images/Screenshot%202024-08-17%20172452.png)
 
 ## Create and Edit /home/ansible/report.yml and Add Ansible Tasks That Output the Required Values into report.txt
 - Create and edit the playbook such that it resembles the following:
@@ -86,5 +90,11 @@ Run the following command:
 ```
 ansible-playbook /home/ansible/report.yml
 ```
-## Conclusion
+
+![run](https://github.com/Kenneth7117/AWS_Projects/blob/main/Ansible%20Facts%20in%20AWS/Images/Screenshot%202024-08-17%20181009.png)
+
 Now if we run cat report.txt, we're going to see all of the information that we've been asked to get. We can hand this text file over to who needs it, because we're done. Congratulations!
+
+![cat](https://github.com/Kenneth7117/AWS_Projects/blob/main/Ansible%20Facts%20in%20AWS/Images/Screenshot%202024-08-17%20181047.png)
+
+## Conclusion
