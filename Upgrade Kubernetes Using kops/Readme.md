@@ -4,6 +4,8 @@ This lab guides students through the creation of a cluster using kops, then upgr
 Students use kops to create the cluster and the kops editory (vi) to edit parameters in the kops cluster configurations file.
 Github repository: https://raw.githubusercontent.com/ACloudGuru-Resources/content-kubernetes-security-ac/master/nginx179.yaml
 
+![Arc](https://github.com/Kenneth7117/AWS_Projects/blob/main/Upgrade%20Kubernetes%20Using%20kops/Images/Screenshot%202024-08-17%20125101.png)
+
 ## Solution
 - Log into the server using the credentials provided for the lab.
 ssh cloud_user@<PUBLIC_IP_ADDRESS>
