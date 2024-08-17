@@ -1,11 +1,12 @@
-# Introduction
+# AWS Cloud Formation
+## Introduction
 Your development team has been using this template for the intern-testing program. After performing an analysis, your team has determined that the t3.small instance was more compute power than they needed. Update the template so that the default instance defined in the stack is a t3.micro.
 
 In this hands-on lab, we're going to jump into an environment that already has a CloudFormation stack deployed. We'll review the contents of the CloudFormation template, and then we'll perform direct updates to the stack itself.
 
-# Solution
+## Solution
 - Log in to the AWS Management Console using the credentials provided on the lab instructions page. Make sure you're using the us-east-1 region.
-## Using Application Composer, Configure the InstanceType Stack Parameter to T3.Micro
+### Using Application Composer, Configure the InstanceType Stack Parameter to T3.Micro
 - In the search bar at the top, enter "CloudFormation".
 - Select CloudFormation from the dropdown menu.
 - Select the stack already in the CloudFormation dashboard.
@@ -36,7 +37,7 @@ In this hands-on lab, we're going to jump into an environment that already has a
 
 - Ensure YAML is selected for the template.
 - Under Parameters, change the default size from t3.small to t3.micro by erasing "small" and typing "micro".
-## Launch the Updated Stack and Verify the New EC2 Resource Is Reachable
+### Launch the Updated Stack and Verify the New EC2 Resource Is Reachable
 - Click Validate.
 - Click Update template.
 - Note: This is a direct update to the existing stack.
@@ -50,7 +51,7 @@ In this hands-on lab, we're going to jump into an environment that already has a
 - Navigate to the Resources tab and open the WebServerInstance physical ID in a new tab to verify that the InstanceType is t3.micro.
 - Navigate back to the CloudFormation dashboard and select the Outputs tab.
 - Open the PublicDNS value in a new tab to ensure the instance is reachable via the public web.
-# Conclusion
+## Conclusion
 - Hands on knowledge on the working of Cloud Formation.
 - Using Application Composer for Canvas/Template View
 - Applying modifications and changes to the template parameters
