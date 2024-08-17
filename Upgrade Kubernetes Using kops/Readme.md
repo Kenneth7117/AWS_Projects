@@ -37,6 +37,9 @@ $ kubectl get nodes
 ```
 $ kubectl apply -f https://raw.githubusercontent.com/ACloudGuru-Resources/content-kubernetes-security-ac/master/nginx179.yaml
 ```
+![github_yaml](https://github.com/Kenneth7117/AWS_Projects/blob/main/Upgrade%20Kubernetes%20Using%20kops/Images/Screenshot%202024-08-17%20123344.png)
+![installing ngnix](https://github.com/Kenneth7117/AWS_Projects/blob/main/Upgrade%20Kubernetes%20Using%20kops/Images/Screenshot%202024-08-17%20113927.png)
+
 - Run the kubectl get pods command until all the replica servers show a Status of Running.
 ```
 $ kubectl get pods
@@ -57,6 +60,9 @@ $ kops update cluster --yes
 $ kops rolling-update cluster --validation-timeout 30m --yes
 ```
 - Each node is cordoned (or cornered off) so no workloads can be deployed to it. After a node is cordoned, the system waits and eventually terminates the node instance, then a new node is re-instantiated. You may watch the cluster update from the AWS console as it terminates and re-instantiates nodes.
+
+![rolling_updates](https://github.com/Kenneth7117/AWS_Projects/blob/main/Upgrade%20Kubernetes%20Using%20kops/Images/Screenshot%202024-08-17%20120119.png)
+
 - If you are in a high availability environment with multiple master and worker nodes, ensure there are no outages when you perform this type of upgrade.
 - After the rolling update is complete, run the kubectl get nodes command to confirm the Kubernetes version is correct.
 ```
@@ -66,5 +72,10 @@ $ kubectl get nodes
 ```
 $ kubectl get pods
 ```
+
+![Final_review](https://github.com/Kenneth7117/AWS_Projects/blob/main/Upgrade%20Kubernetes%20Using%20kops/Images/Screenshot%202024-08-17%20121900.png)
+
 ## Conclusion
-Congratulations — you've completed this hands-on lab!
+- Learnt the creation of K8s cluster
+- Editing the config file for version upgrade
+- pusing out a rolling upgrade
