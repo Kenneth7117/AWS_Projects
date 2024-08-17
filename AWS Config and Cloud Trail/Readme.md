@@ -1,4 +1,5 @@
-# Introduction
+# AWS Config and CloudTrail
+## Introduction
 
 In this hands-on lab, you just started as a Cloud Engineer at a company. Your new boss has asked you to do a scream test and stop an EC2 instance as well as remove network routes and rules to validate if the Lab VPC and Corporate Server EC2 instance can be decommissioned.
 
@@ -7,10 +8,10 @@ Very soon after the changes, the scream test fails and clients are reporting the
 
 ![Architecture](https://github.com/Kenneth7117/AWS_Projects/blob/main/AWS%20Config%20and%20Cloud%20Trail/Images/CloudTrail_and_Config_Lab.png) 
 
-# Solution
+## Solution
 - Log in to the live AWS environment using the credentials provided. Make sure you are in the N. Virginia (us-east-1) region throughout the lab.
 
-## Initiate the Scream Test
+### Initiate the Scream Test
 - Make sure you are in the N. Virginia region in the top right-hand corner of the console.
 - Navigate to the EC2 console by entering "EC2" in the search bar on top and selecting EC2 from the search results.
 - Locate the CorporateServer instance and select the checkbox next to instance. Make a note of the instance ID for later on in this lab.
@@ -31,7 +32,7 @@ Very soon after the changes, the scream test fails and clients are reporting the
 - Click on Delete for the one outbound rule with the destination set to 0.0.0.0/0.
 - Click on save rules.
 
-## Review the Changes for the Scream Test in Config and CloudTrail
+### Review the Changes for the Scream Test in Config and CloudTrail
 - Navigate to CloudTrail by entering "cloudtrail" in the search bar and selecting CloudTrail from the search results.
 - Click on the hamburger menu icon (the icon with three horizontal bars) in the top left corner.
 - Click on **Event History**.
@@ -54,7 +55,7 @@ Very soon after the changes, the scream test fails and clients are reporting the
 - At the bottom of the event details, click on View **AWS Config resource timeline**.
 - Make note of the output in the **JSON diff results**, which show exactly what security group rules were deleted from the Corporate Application Server security group.
 
-## Revert the Scream Test Changes and Test Networking
+### Revert the Scream Test Changes and Test Networking
 - Navigate to the VPC console by entering "VPC" in the search bar on top and selecting the VPC search result.
 - Click on Security Groups.
 - Locate and select the CorporateApplicationServer security group.
@@ -89,7 +90,7 @@ yum install -y nmap
 ```
 ping -c4 8.8.8.8
 ```
-# Conclusion
+## Conclusion
 
 - Hands on knowledge on the working of Config and Cloud Trail.
 - Analyzing the changes on the VPC components using AWS Cloud Trail
