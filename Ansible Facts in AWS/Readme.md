@@ -98,3 +98,7 @@ Now if we run cat report.txt, we're going to see all of the information that we'
 ![cat](https://github.com/Kenneth7117/AWS_Projects/blob/main/Ansible%20Facts%20in%20AWS/Images/Screenshot%202024-08-17%20181047.png)
 
 ## Conclusion
+
+- Hands on working of Ansible
+- Creation of Playbook
+- Execution of Playbook to generate report with the required facts
