@@ -1,8 +1,7 @@
 # Upgrade Kubernetes Using kops
 ## Introduction
 Creation of a cluster using kops, then upgrading the Kubernetes version by editing the cluster configuration and performing a rolling update. This terminates and then re-instantiates the master node and each of the worker nodes.
-Students use kops to create the cluster and the kops editory (vi) to edit parameters in the kops cluster configurations file.
-Github repository: https://raw.githubusercontent.com/ACloudGuru-Resources/content-kubernetes-security-ac/master/nginx179.yaml
+Use kops to create the cluster and the kops editory (vi) to edit parameters in the kops cluster configurations file.
 
 ![Arc](https://github.com/Kenneth7117/AWS_Projects/blob/main/Upgrade%20Kubernetes%20Using%20kops/Images/Screenshot%202024-08-17%20125101.png)
 
