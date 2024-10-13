@@ -1,0 +1,105 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'S3 Bucket for strage CloudTrail logs'
+
+Resources:
+  LocalCloudTrailLogBucket:
+    DeletionPolicy: Retain
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub local-cloudtrail-bucket-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+      
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref LocalCloudTrailLogBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Action:
+              - s3:GetBucketAcl
+            Effect: Allow
+            Resource: !Sub arn:aws:s3:::${LocalCloudTrailLogBucket}
+            Principal:
+              Service: cloudtrail.amazonaws.com
+          - Action: 
+              - s3:PutObject
+            Effect: Allow
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref LocalCloudTrailLogBucket
+                - '/*'
+            Principal: 
+              Service: cloudtrail.amazonaws.com
+  
+  Trail:
+    Type: AWS::CloudTrail::Trail
+    Properties:
+      EnableLogFileValidation: True
+      S3BucketName: !Ref LocalCloudTrailLogBucket
+      IncludeGlobalServiceEvents: True
+      IsLogging: True
+      IsMultiRegionTrail: True
+      KMSKeyId: !Ref EncryptionCMK
+
+  EncryptionCMK:
+    Type: AWS::KMS::Key
+    DeletionPolicy: Retain
+    Properties:
+      Description: "Encryption Key for S3 Bucket which strage CloudTrail Logs"
+      Enabled: True
+      KeyPolicy:
+        Version: 2012-10-17
+        Statement: 
+          - Sid: Enable IAM User Permissions
+            Action: 
+              - 'kms:*'
+            Effect: Allow
+            Principal: 
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:root
+            Resource: '*'
+
+          - Sid: Enable admin user to Use Key
+            Action:
+              - 'kms:Encrypt'
+              - 'kms:Decrypt'
+              - 'kms:ReEncrypt*'
+              - 'kms:GenerateDataKey*'
+              - 'kms:DescribeKey'
+            Effect: Allow
+            Principal: 
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:user/admin
+            Resource: '*'
+
+          - Sid: Allow attachment of persistent resources
+            Action:
+              - 'kms:CreateGrant'
+              - 'kms:ListGrants'
+              - 'kms:RevokeGrant'
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:user/admin
+            Condition:
+              Bool:
+                'kms:GrantIsForAWSResource': True
+            Resource: '*'             
+
+          - Sid: Enable CloudTrail to Encrypt logs
+            Action:
+              - 'kms:GenerateDataKey*'
+              - 'kms:DescribeKey'
+            Effect: Allow
+            Resource: !Sub "arn:aws:kms:${AWS::Region}:${AWS::AccountId}:key/*"
+            Principal: 
+              Service: cloudtrail.amazonaws.com
+            
+  KeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub alias/local-cloudtrail-${AWS::AccountId}
+      TargetKeyId: !Ref EncryptionCMK
