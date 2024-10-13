@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'Organization-level CloudTrail'
+
+Parameters:
+  LogBucketName:
+    Type: String
+    Description: 'S3 Bucket Name for strage cloudtrail logs'
+  EncryptionKey:
+    Type: String
+    Description: 'ARN of EncryptionKey'
+
+Resources:
+  OrganizationalCloudTrail:
+    Type: AWS::CloudTrail::Trail
+    Properties:
+      EnableLogFileValidation: true
+      S3BucketName: !Ref LogBucketName
+      IsLogging: true
+      IncludeGlobalServiceEvents: true
+      IsMultiRegionTrail: true
+      KMSKeyId: !Ref EncryptionKey
+      IsOrganizationTrail: true
+      TrailName: !Sub organizational-cloudtrail-${AWS::AccountId}

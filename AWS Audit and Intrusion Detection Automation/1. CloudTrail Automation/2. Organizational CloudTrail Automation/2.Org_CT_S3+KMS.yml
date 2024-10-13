@@ -1,0 +1,110 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'Organizational CloudTrail'
+
+Resources:
+  CloudTrailLogBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub central-cloudtrail-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: True
+        BlockPublicPolicy: True
+        IgnorePublicAcls: True
+        RestrictPublicBuckets: True
+      VersioningConfiguration:
+        Status: Enabled
+      
+  BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref CloudTrailLogBucket
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: Allow CloudTrail to GetBucketAcl
+            Action:
+              - s3:GetBucketAcl
+            Effect: Allow
+            Resource: !Sub arn:aws:s3:::${CloudTrailLogBucket}
+            Principal:
+              Service: cloudtrail.amazonaws.com
+          - Sid: Allow CloudTrail to PutObjects
+            Action: 
+              - s3:PutObject
+            Effect: Allow
+            Resource: !Join
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref CloudTrailLogBucket
+                - '/AWSLogs/*'
+            Principal: 
+              Service: cloudtrail.amazonaws.com
+            Condition:
+              StringEquals:
+                "s3:x-amz-acl": bucket-owner-full-control
+
+  EncryptionCMK:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: "Encryption Key for S3 Bucket which strage CloudTrail Logs"
+      Enabled: True
+      KeyPolicy:
+        Version: 2012-10-17
+        Statement: 
+          - Sid: Enable IAM User Permissions
+            Action: 
+              - 'kms:*'
+            Effect: Allow
+            Principal: 
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:root
+            Resource: '*'
+          - Sid: Allow CloudTrail to Encrypt logs
+            Action:
+              - 'kms:GenerateDataKey*'
+            Effect: Allow
+            Resource: '*'
+            Principal: 
+              Service: cloudtrail.amazonaws.com
+            # Condition:
+            #   StringLike:
+            #     "kms:EncryptionContext:aws:cloudtrail:arn": 
+            #       - !Sub "arn:aws:cloudtrail:*:${AWS::AccountId}:trail/*"
+          - Sid: Allow CloudTrail to Describe key
+            Action:
+              - 'kms:DescribeKey'
+            Effect: Allow
+            Principal:
+              Service: cloudtrail.amazonaws.com
+            Resource: '*'
+
+          - Sid: Enable admin user to Use Key
+            Action:
+              - 'kms:Encrypt'
+              - 'kms:Decrypt'
+              - 'kms:ReEncrypt*'
+              - 'kms:GenerateDataKey*'
+              - 'kms:DescribeKey'
+            Effect: Allow
+            Principal: 
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:user/admin
+            Resource: '*'
+
+          - Sid: Allow attachment of persistent resources
+            Action:
+              - 'kms:CreateGrant'
+              - 'kms:ListGrants'
+              - 'kms:RevokeGrant'
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:user/admin
+            Condition:
+              Bool:
+                'kms:GrantIsForAWSResource': True
+            Resource: '*'             
+
+
+  KeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub alias/central-cloudtrail-${AWS::AccountId}
+      TargetKeyId: !Ref EncryptionCMK
