@@ -1,0 +1,133 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'Organization-level CloudTrail'
+
+Parameters:
+  LogBucketName:
+    Type: String
+    Description: 'S3 Bucket Name for strage cloudtrail logs'
+  EncryptionKey:
+    Type: String
+    Description: 'ARN of EncryptionKey'
+
+Resources:
+  OrganizationalCloudTrail:
+    Type: AWS::CloudTrail::Trail
+    Properties:
+      CloudWatchLogsLogGroupArn: !GetAtt CloudWatchLogGroup.Arn
+      CloudWatchLogsRoleArn: !GetAtt CloudWatchPutLogRole.Arn
+      EnableLogFileValidation: true
+      S3BucketName: !Ref LogBucketName
+      IsLogging: true
+      IncludeGlobalServiceEvents: true
+      IsMultiRegionTrail: true
+      KMSKeyId: !Ref EncryptionKey
+      IsOrganizationTrail: true
+      TrailName: !Sub organizational-cloudtrail-${AWS::AccountId}
+
+  CloudWatchLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      KmsKeyId: !GetAtt CloudWatchEncryptionKey.Arn
+      LogGroupName: Central-CloudTrail-Logs
+
+  CloudWatchPutLogRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: CloudTrailPutLogsRole
+      Description: Allow CloudTrail to Create Log Stream and Put Logs
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal: 
+              Service: cloudtrail.amazonaws.com
+            Action: sts:AssumeRole
+      Path: /
+      Policies:
+        - PolicyName: CloudTrailWorkWithCloudWatchPolicy
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: 
+                  - 'logs:CreateLogStream'
+                  - 'logs:PutLogEvents'
+                Resource:
+                  - !GetAtt CloudWatchLogGroup.Arn
+
+
+
+  CloudWatchEncryptionKey:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: "Encryption Key for CloudWatch Logs"
+      Enabled: True
+      KeyPolicy:
+        Version: 2012-10-17
+        Statement: 
+          - Sid: Enable IAM User Permissions
+            Action: 
+              - 'kms:*'
+            Effect: Allow
+            Principal: 
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:root
+            Resource: '*'
+          - Sid: Allow CloudTrail to Encrypt logs
+            Action:
+              - 'kms:GenerateDataKey*'
+            Effect: Allow
+            Resource: '*'
+            Principal: 
+              Service: cloudtrail.amazonaws.com
+          - Sid: Allow CloudTrail to Describe key
+            Action:
+              - 'kms:DescribeKey'
+            Effect: Allow
+            Principal:
+              Service: cloudtrail.amazonaws.com
+            Resource: '*'
+
+          - Sid: Enable admin user to Use Key
+            Action:
+              - 'kms:Encrypt'
+              - 'kms:Decrypt'
+              - 'kms:ReEncrypt*'
+              - 'kms:GenerateDataKey*'
+              - 'kms:DescribeKey'
+            Effect: Allow
+            Principal: 
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:user/admin
+            Resource: '*'
+
+          - Sid: Enable CloudWatch Logs to Use Key
+            Action:
+              - 'kms:Encrypt'
+              - 'kms:Decrypt'
+              - 'kms:ReEncrypt*'
+              - 'kms:generateDataKey*'
+              - 'kms:DescribeKey'
+            Effect: Allow
+            Principal:
+              Service: !Sub logs.${AWS::Region}.amazonaws.com
+            Resource: '*'
+
+          - Sid: Allow attachment of persistent resources
+            Action:
+              - 'kms:CreateGrant'
+              - 'kms:ListGrants'
+              - 'kms:RevokeGrant'
+            Effect: Allow
+            Principal:
+              AWS: !Sub arn:aws:iam::${AWS::AccountId}:user/admin
+            Condition:
+              Bool:
+                'kms:GrantIsForAWSResource': True
+            Resource: '*'             
+
+  CloudWatchEncryptionKeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub alias/cloudtrail-cwl-${AWS::AccountId}
+      TargetKeyId: !Ref CloudWatchEncryptionKey
+
+
